@@ -8,6 +8,19 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: dev
+          POSTGRES_DB: app
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+    env:
+      DATABASE_URL: postgres://postgres:dev@localhost:5432/app
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
