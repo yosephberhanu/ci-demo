@@ -5,5 +5,8 @@
     "test": "node --test"
   },
   "type": "module",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "pg": "^8.23.1"
+  }
 }
